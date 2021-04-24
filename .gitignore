@@ -3,6 +3,8 @@ __pycache__/
 
 # Environment
 env/
+.idea/
 
 # My files
 creds.json
+config.py

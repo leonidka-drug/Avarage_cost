@@ -10,9 +10,12 @@ def main():
     days_gone = len(sold_days)
     remaining_days = days_number - days_gone
 
-    sold_avarege = sum(sold_days) / 11 / days_gone                    # Средний чек прошлых дней
-    shortage = (needed_avarege_cost - sold_avarege) * days_gone       # Недостача
-    next_days_cost = needed_avarege_cost + shortage / remaining_days  # Средний чек след-их дней
+    # Средний чек прошлых дней
+    sold_avarege = sum(sold_days) / 11 / days_gone
+    # Недостача
+    shortage = (needed_avarege_cost - sold_avarege) * days_gone       
+    # Средний чек следующих дней
+    next_days_cost = needed_avarege_cost + shortage / remaining_days  
 
     print('\nЗа {} дней средний чек: {:.2f},\nНедостача: {:.2f},'.format(
         days_gone,

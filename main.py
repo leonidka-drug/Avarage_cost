@@ -1,21 +1,24 @@
-from config import (
-    needed_avarege_cost, income, days_number,
-    CREDENTIALS_FILE, spreadsheet_id, range_)
+from config import CREDENTIALS_FILE, GH_data
 from connect_to_sheets import connect_and_get_values
 
 
 def main():
-    sold_days = connect_and_get_values(CREDENTIALS_FILE, spreadsheet_id, range_)
+    GH_number = int(input("Напиши 1, если нужна информация по Теплу, Напиши 2 - по Софии: "))
+    if GH_number == 1:
+        data = GH_data['teplo']
+    else:
+        data = GH_data['sofia']
+
+    income = data['needed_avarege_cost'] * data['ROOMS_NUMBER'] * data['days_number']
+
+    sold_days = connect_and_get_values(CREDENTIALS_FILE, data['spreadsheet_id'], data['range_'])
 
     days_gone = len(sold_days)
-    remaining_days = days_number - days_gone
+    remaining_days = data['days_number'] - days_gone
 
-    # Средний чек прошлых дней
-    sold_avarege = sum(sold_days) / 11 / days_gone
-    # Недостача
-    shortage = (needed_avarege_cost - sold_avarege) * days_gone       
-    # Средний чек следующих дней
-    next_days_cost = needed_avarege_cost + shortage / remaining_days  
+    sold_avarege = (sum(sold_days) + data['fora']) / data['ROOMS_NUMBER'] / days_gone  # Средний чек прошлых дней
+    shortage = (data['needed_avarege_cost'] - sold_avarege) * days_gone        # Недостача
+    next_days_cost = data['needed_avarege_cost'] + shortage / remaining_days   # Средний чек след-их дней
 
     print('\nЗа {} дней средний чек: {:.2f},\nНедостача: {:.2f},'.format(
         days_gone,

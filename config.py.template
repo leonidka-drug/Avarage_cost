@@ -1,10 +1,16 @@
-CREDENTIALS_FILE = ''
-ROOMS_NUMBER = 11
+CREDENTIALS_FILE = "creds.json"
 
-# Можно менять
-needed_avarege_cost = 2100  # Желаемый средний чек
-days_number = 30            # Число рабочих дней
-range_ = "'Приход'!E4:E8"
-spreadsheet_id = ''
+# 1uptvUP4Rf5ByNJDjkChlcg0GMhDY2Gf3CnRbo5mKCtY   Sofia GuestHouse
+# 12jNJ5exobLz6CFG04xlXMsdnVP-rhvHNMRHE-RU8IIw   Teplo GuestHouse
 
-income = needed_avarege_cost * ROOMS_NUMBER * days_number
+GH_data = {
+	'sofia' : {
+		# Можно менять 
+		'ROOMS_NUMBER' : 17,
+		'needed_avarege_cost' : 1700,        # Желаемый средний чек
+		'fora' : 500000,                     # Деньги, заработанные до сезона
+		'days_number' : 150,                 # Число рабочих дней
+		'range_' : "'Доход'!E1:E382",
+		'spreadsheet_id' : '1uptvUP4Rf5ByNJ2222hlcg0GMhDY24756nRbo5mKCtY',
+	},
+}

@@ -1,8 +1,5 @@
 CREDENTIALS_FILE = "creds.json"
 
-# 1uptvUP4Rf5ByNJDjkChlcg0GMhDY2Gf3CnRbo5mKCtY   Sofia GuestHouse
-# 12jNJ5exobLz6CFG04xlXMsdnVP-rhvHNMRHE-RU8IIw   Teplo GuestHouse
-
 GH_data = {
 	'sofia' : {
 		# Можно менять 
@@ -10,7 +7,8 @@ GH_data = {
 		'needed_avarege_cost' : 1700,        # Желаемый средний чек
 		'fora' : 500000,                     # Деньги, заработанные до сезона
 		'days_number' : 150,                 # Число рабочих дней
-		'range_' : "'Доход'!E1:E382",
+		'range_B' : "'Доход'!B1:B400",
+		'range_A' : "'Доход'!A1:A400",
 		'spreadsheet_id' : '1uptvUP4Rf5ByNJ2222hlcg0GMhDY24756nRbo5mKCtY',
 	},
 }

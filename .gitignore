@@ -8,3 +8,5 @@ env/
 # My files
 creds.json
 config.py
+*.sublime-project
+*.sublime-workspace

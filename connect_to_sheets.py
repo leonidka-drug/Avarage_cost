@@ -2,6 +2,8 @@ import httplib2
 import apiclient.discovery
 from oauth2client.service_account import ServiceAccountCredentials
 
+from config import CREDENTIALS_FILE
+
  
 def connect(credentials_file):
     credentials = ServiceAccountCredentials.from_json_keyfile_name(
@@ -13,15 +15,10 @@ def connect(credentials_file):
     return service
 
 
-def get_values(service, spreadsheet_id, range_):
-    values = service.spreadsheets().values().get(
+def get_values(spreadsheet_id, range_):
+    values = connect(CREDENTIALS_FILE).spreadsheets().values().get(
         spreadsheetId=spreadsheet_id,
         range=range_,
         majorDimension='ROWS'
     ).execute()
-    values = [val[0] for val in values['values'] if val]
-
-    # Здесь пишу калькулятор неотживших предоплат
-    # values = [val for val in values['values'] if val]
-
     return values
